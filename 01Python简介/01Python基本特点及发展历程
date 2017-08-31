@@ -42,6 +42,7 @@ Python3 进行了一个大的升级 与 Python2不兼容，导致许多2.x编写
     Twisted：不支持Python3，由于它很复杂，要支持Python3过程比较慢。
 
 
-
+九：.py文件扩展名：
+    .py：python的程序格式。
 
 
