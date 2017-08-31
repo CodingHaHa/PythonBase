@@ -1,0 +1,12 @@
+一：输入使用input()函数，可以让用户输入字符串，并存放到一个变量里。
+   name =  input("name:")
+
+
+二：输出：
+    python3中输出使用print()
+    ①：print()函数可以接受多个字符串，使用逗号隔开，他会依次打印每个字符串，遇到逗号会输出一个空格。
+        print('The quick brown fox', 'jumps over', 'the lazy dog')
+    ②：print()可以打印整数，或计算结果。
+        print(100 + 200)
+
+

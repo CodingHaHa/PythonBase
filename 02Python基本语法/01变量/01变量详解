@@ -34,3 +34,6 @@
 
 
 
+六：print()函数的形式：
+    ①：python2：print "sss"
+    ②：python3：print("sss")
