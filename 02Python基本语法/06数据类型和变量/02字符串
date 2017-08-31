@@ -11,4 +11,47 @@
          '\u4e2d\u6587'：'中文'
 
 三：基本的字符串使用：
-    A:
+    A:Python字符串类型为str，内存为Unicode，一个字符对应若干个字节，   再网络上传输或存储到磁盘上，需要把str变为字节bytes
+     x = b'ABC'
+     'ABC':为str
+     b'ABC':内容显示和前者一样，但是bytes的每个字符都只占用一个字节。
+
+    B:对Unicode的str通过encode()编码为制定的bytes
+        'ABC'.encode('ascii'):把Unicode的ABC编码为ASCII码
+        注意：纯英文的str可以用ASCII编码为bytes，内容是一样的，含有中文的str可以用UTF-8编码为bytes。含有中文的str无法用ASCII编码，因为中文编码的范围超过了ASCII编码的范围，Python会报错。
+                在bytes中，无法显示为ASCII字符的字节，用\x##显示。
+
+    C:如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。要把bytes变为str，就需要用decode()方法：
+        >>> b'ABC'.decode('ascii'):'ABC'
+        >>> b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8'):'中文'
+
+    D:要计算str包含多少个字符，可以用len()函数：
+        len('中文'):2
+
+        注意：len()函数计算的是str的字符数，如果换成bytes，len()函数就计算字节数：
+            len('中文'.encode('utf-8'))：6
+
+        在操作字符串时，我们经常遇到str和bytes的互相转换。为了避免乱码问题，应当始终坚持使用UTF-8编码对str和bytes进行转换。
+
+    E:我们经常遇到str和bytes的互相转换。为了避免乱码问题，应当始终坚持使用UTF-8编码对str和bytes进行转换。
+        由于Python源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为UTF-8编码。当Python解释器读取源代码时，为了让它按UTF-8编码读取，我们通常在文件开头写上这两行：
+        #!/usr/bin/env python3
+        # -*- coding: utf-8 -*-
+        第一行注释是为了告诉Linux/OS X系统，这是一个Python可执行程序，Windows系统会忽略这个注释；
+        第二行注释是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。
+        申明了UTF-8编码并不意味着你的.py文件就是UTF-8编码的，必须并且要确保文本编辑器正在使用UTF-8 without BOM编码：
+
+    F:格式化字符串：在Python中，采用的格式化方式和C语言是一致的，用%实现
+        常见的占位符有：
+            %d	整数
+            %f	浮点数
+            %s	字符串
+            %x	十六进制整数
+        a:格式化整数和浮点数还可以指定是否补0和整数与小数的位数：
+             '%2d-%02d' % (3, 1):' 3-01'
+             '%.2f' % 3.1415926:'3.14'
+        b:如果你不太确定应该用什么，%s永远起作用，它会把任何数据类型转换为字符串：
+            'Age: %s. Gender: %s' % (25, True)
+        c:如果字符串中%为普通字符？
+            使用转义字符：用%%来表示一个%：
+                例子： 'growth rate: %d %%' % 7  ====：'growth rate: 7 %'
