@@ -37,7 +37,78 @@ print(d)
 #8:注意，dict内部存放的顺序和key放入的顺序是没有关系的。
 
 
-#9:
+#9:dict.setdefault:如果有键 就不再进行修改了；键不存在就新增键值对;并返回相应的值
+a = {"a":"a"}
+print(a["a"])
+
+a.setdefault("a",53)
+print(a["a"])
+
+
+#10：items():获取所有的元组
+a = {"a":"a","b":"b"}
+print()
+
+#11：keys()：获取所有的key
+print(a.keys())
+
+#12:values()：获取所有的值
+print(a.values())
+
+#上面3个函数返回的类型不是list,要想其对应的list，需要进行转换
+print(list(a.items()))
+
+#13:update（）更新，扩展
+dic1 = {"age":"12","name":"ss","b":"111"}#若有键重复，则进行值的覆盖
+dic2 = {"a":42,"b":55}
+dic2.update(dic1)
+print(dic2)
+
+#14：删除：将字典全部删除
+del dic1
+# print(dic1)#没有改dic1字典对象了，所以报错。
+
+#15：clear():清空字典，把内容删除，变量还保留
+dic2.clear()
+print(dic2)
+
+#16:formkeys：以第一个元素的每一个作为key,后一个元素作为值
+dic3 = dict.fromkeys(["host","port","dns"],"value---")
+print(dic3)
+dic3 = dict.fromkeys(["host","port","dns"],["value---","ssss"])#{'host': ['value---', 'ssss'], 'port': ['value---', 'ssss'], 'dns': ['value---', 'ssss']}
+print(dic3)
+
+
+#17:字典嵌套：
+vv_site = {
+    "美国":{
+        "旧金山":"很有钱",
+        "纽约":"很犯法"
+    }
+    ,
+    "中国":{
+        "北京":"很大",
+        "成都":"也很大"
+
+    }
+}
+print(vv_site)
+#进行修改
+vv_site["美国"]["纽约"] = "大大大"
+print(vv_site)
+
+#18：排序：字典是根据key进行排序的
+dic = {5:"11",2:"ss",88:"44"}
+print(sorted(dic))
+print(sorted(dic.values()))
+
+#19:字典的遍历：
+for i in dic:
+    print(i,dic.get(i),dic[i])#默认打印的是键
+
+# for i,v in dic.items():#这里有一个转换，效率不高
+#     print(i,v)
+
 """
 dict有以下几个特点：
     查找和插入的速度极快，不会随着key的增加而变慢；

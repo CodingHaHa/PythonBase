@@ -30,4 +30,8 @@ print(t)
 #其实不可变，说的是tuple的每个元素，指向永远不变。
 #但是如果tuple中的元素本身就是可变的，例如list，那么list中的元素是可变的，而tuple的指向并没有变化。
 
-
+#7:元组不可以被修改
+a = (1,2,3)
+print(a[1])
+a[1]=5#TypeError: 'tuple' object does not support item assignment,元组不能被修改
+print(a)

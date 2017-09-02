@@ -50,3 +50,40 @@ len(s)#要注意s只有4个元素，其中s[2]又是一个list，如果拆开写
 #12:如果一个list中一个元素也没有，就是一个空的list，它的长度为0：
 L = []
 print(len(L))
+
+#13：增：切片：
+s = ['python', 'java', 'asp', 'php', 'scheme']
+print(s[1:2])#['java']
+print(s[1:4])#['java', 'asp', 'php']
+print(s[1:])#['java', 'asp', 'php', 'scheme']，取到最后一个元素
+print(s[1:-1])#['java', 'asp', 'php']，取到倒数第二个元素
+print(s[1::2])#['java', 'php']，取到最后一个元素，（步长为2）
+print(s[1:-1:2])#['java', 'php']，取到最后一个元素，（步长为2）
+
+#14：count:统计出现的次数
+count = ["to","be","to","not"].count("to")
+print(count)
+
+#15:extend方法：扩展列表：
+a = [1,3,2]
+b = [7,8,6]
+a.extend(b)#
+print(a)#a被b扩展了，元素多了。
+print(b)
+
+#16：index方法：获取某个元素所在的索引
+a = ["a","b","c","d"]
+print(a.index("c"))
+
+#17:reverse:反转顺序：
+a = ["a","b","c","d"]
+a.reverse()#返回的还是a列表，它内部元素的顺序被颠倒了。
+print(a)
+
+#18：sort排序
+a = [3,8,9,10]
+a.sort()
+print(a)
+
+#19 type :查询类型
+print(type(a) is list)
