@@ -96,33 +96,30 @@
 # obj.server_forever()
 
 #针对构造方法：
-
-class BaseRequest():
+class BaseRequest:
     def __init__(self):
         print("Basic.__int__")
 
-class RequestHandler(BaseRequest):
-    def __int__(self):
-        print("RequestHandler.__int__")
-
-class Minx():
-    def __int__(self):
-        print("Minx.__int__")
-
-class Son(Minx, RequestHandler):
-    def __int__(self):
-        print("Son.__int__")
-
-class test():
+class RequestHandler:
     def __init__(self):
-        print("test!!")
+        print("RequestHandler.__int__")
+        #调用父类的构造器
+        # BaseRequest.__init__(self)
+        super(Son,self).__init__()
+
+class Minx:
+    # def __init__(self):
+    #     print("Minx.__int__")
+    pass
+
+class Son(Minx,RequestHandler):
+    # def __init__(self):
+    #     print("Son.init")
+    def a(self):
+        print("Minx")
+
 
 obj = Son()
-#obj = BaseRequest()
-#test_obj = test()
-
-# mix_obj = Minx()
-# if __name__ == "__main__":
-#      #__init__()
-#     # obj.__int__()
-#     test_obj = test()
+#说明：
+    # 如果子类重写了__init__()方法那么调用子类自己的，否则找父类；
+    # 如果是多继承，那么从左往右找父类，父类没有重写__init__()方法则继续找父类。
