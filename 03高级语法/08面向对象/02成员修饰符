@@ -1,0 +1,18 @@
+一：成员修饰符：在Python就两类
+    ①：公有成员
+    ②：私有成员
+
+    字段：
+        class Foo:
+            def __init__(self,name,age):
+                self.name  = name
+                #self.age = age
+                #__私有的:外界就不能访问了
+                self.__age = age
+
+
+        obj = Foo()
+        obj.name
+
+
+
