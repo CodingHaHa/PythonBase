@@ -1,0 +1,33 @@
+一：metaclass:类的祖宗：
+    a:python中一切事物都是对象。
+    b:
+
+        class Foo:
+            pass
+
+        obj = Foo()
+        #obj是对象，Foo类的对象
+        #Foo类也是一个对象，type的对象。
+
+            #1:类也是对象
+            class Foo:
+                def func(self):
+                    print(123)
+
+            #这样是创建一个Foo类的对象
+            obj = Foo()
+            #=============================
+            def function(self):
+                print(123)
+
+            #这样也是定义一个类，
+            # Foo = type("Foo",(object,),{"func":function})
+            #使用lamba表达式，替换function函数的定义
+            Foo = type("Foo",(object,),{"func":lambda x:123})
+            #这样也是创建一个Foo类的对象
+            obj = Foo()
+
+    c:  类都是type类的对象 type()
+        "对象"都是类的对象 类名()
+
+        记住一点：通过类来创建对象时，在类的__init__()方法执行之前还执行了许多其他的方法。（与metaclass 和 type相关）
