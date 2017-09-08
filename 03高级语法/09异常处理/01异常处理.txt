@@ -1,0 +1,62 @@
+一：异常处理：基本步骤。
+  A:基本过程:
+    try:
+        代码块，逻辑；
+        注意：一旦有错误，就不会再继续执行try中剩余的代码
+    except Exception as e:
+        代码块出错了， 就会自动执行当前块内容。
+
+    Exception：会捕获所有异常。
+    记录日志时：对详细错误，进行记录。所以，分别捕获错误。
+
+  B:详细过程：
+    try:
+    代码块，逻辑
+    except IndexException as e:#优先捕获详细异常。
+        代码块出错了， 就会自动执行当前块内容。
+
+    except Exception as ex:#Exception，应该放到最后
+        print ex
+
+    所以Exception，应该放到最后：越详细的异常，应该优先被捕获。
+
+    #如果，不出错，就会执行else中的代码。如果出错则执行except中的代码。
+    else:
+        不出现错误，就会执行这里的代码。
+    finally:
+        不论出错没有最后都会执行这里的代码块。
+
+
+  C：主动触发异常：
+     def db():
+        return False
+
+      try:
+        result = db()
+        if not result:
+            raise Exception("数据库处理异常")#主动触发异常。
+      except Exception as e:#接收上面触发的异常
+        str_err = str(e)#获取异常信息
+        print(e)
+        #打开文件，记录异常日志
+
+
+
+二：异常种类：每一种错误，都对应特定类型的异常。
+    ①：Python内置异常：
+    ②：自定义异常：
+        A：继承Exception：
+
+        class OldError(Exception):
+            def __init__(self,message):
+                self.message = message
+            def __str__(self):
+                return self.message
+
+        obj = OldError("xxxx")
+        print(obj)#就会执行__str__()方法
+
+三：断言：用于强制用户服从，并且可捕获，一般不会捕获。
+    assert 条件
+    如果条件满足：继续执行后面代码，否则报错。
+    例子：assert 1==2

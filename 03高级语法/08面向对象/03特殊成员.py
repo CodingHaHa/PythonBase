@@ -96,12 +96,14 @@ class Foo:
         self.name = name
         self.age = age
 
+    #获取
     def __getitem__(self, item):
         return item+10
-
+    #设置
     def __setitem__(self, key, value):
         print(key,value)
 
+    #删除
     def __delitem__(self, key):
         print(key)
 
