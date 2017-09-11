@@ -1,6 +1,7 @@
 一：创建socket对象：分为server端和client端
     创建socket链接：def __init__(self, family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None):
-        family=AF_INET:web服务器之间网络通信（默认）
+        family=AF_INET:web服务器之间网络通信（默认:IPV4）
+        family=AF_INET6:web服务器之间网络通信 IPV6
         family=AF_UNIX :unix系统上不同进程间通信
 
         SOCK_STREAM:TCP（默认）
@@ -15,8 +16,8 @@ server端socket：
 二：用到的方法：
         server下的方法：
             bind()
-            listen()
-            accept()
+            listen(backlog):backlog设置为，表示内核已经接收到了连接请求，但是服务器还没有调用accept进行处理的连接数最大为5；这个值不能无限制大，因为 要在内核中维护链接队列。
+            accept()：接受链接并返回（conn,address），其中conn时新建的套接字对象，可以用来接收和发送数据。
 
            发送和接收数据：
             recv()：接收数据；阻塞
@@ -27,12 +28,17 @@ server端socket：
 
 
         client下的方法：
-            connect()
-            recv()：阻塞
+            connect(address)：连接到address处的套接字。一般，address的格式为元组(hostname,port),如果连接出错返回socket.error错误。
+            socket.connect_ex(address):同上，只是会有返回值，成功返回0，失败返回编码，如：10061
+            recv(bufsize[,flag])：阻塞;接收套接字的数据，以字符串形式返回，bufsize指定最多可以接收的数据量。flag提供有关消息的其他信息，通常可以忽略。
             send()
             sendall()
-
+            senddto(string[,flag],address):将数据发送到套接字，address是形式为(ipaddr,port)的元组，指定远程地址。返回值时发送的字节数。该函数主要用于UDP协议。
             close():
+            settimeout(timeout):设置套接字超时时间，timeout是一个浮点数，单位是秒。值为None表示没有超时。一般应该在刚创建套接字时设置，因为他们可能用于连接超做。
+            getpeername():返回套接字的远程地址。返回值通常是元组（ipaddr,port）
+            getsocketname():返回套接字自己的地址，返回值通常是元组（ipaddr,port）
+            fileno():套接字的文件描述符。
 
      注意：在Python3里面，不管是接收还是发生都需要是byte类型。在Python2中可以是string类型
             TypeError: a bytes-like object is required, not 'str'
@@ -41,6 +47,13 @@ server端socket：
  注意：只要链接建立好之后，谁先说话都可以。
 
 
+发送数据：遵循一发一收原则。
+
+        socket.setblocking(bool):默认为true，设置是否阻塞，如果为FALSE，那么accept和recv时一旦无数据就报错。
+
+发送数据时不能发送空数据（直接回车，不加数据）
+
  三：client的socket和server的socket：
     server 的socket为了绑定端口号和ip，以及listen端口：
         当server的conn
+
