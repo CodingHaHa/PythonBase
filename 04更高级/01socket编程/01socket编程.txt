@@ -57,3 +57,17 @@ server端socket：
     server 的socket为了绑定端口号和ip，以及listen端口：
         当server的conn
 
+
+
+四：注意：当直接关闭了client程序，会导致server端报错。
+    所以需要对
+        server端：data = conn.recv(1024)进行异常捕获。
+     try:
+        data = conn.recv(1024)#如果客户端直接发送一个（空数据，例如不发数据直接回车），这里就是阻塞，不会执行。
+    except Exception as e:
+        break//退出当前循环，接受另一个client端的连接请求。
+
+     注意：这样的异常处理是在windows下的，在Linux下不会报错的。
+        Linux下：他认为是空。
+            data = conn.recv(1024)
+            if not data ：break//空就报错。
