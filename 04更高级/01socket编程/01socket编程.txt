@@ -1,0 +1,46 @@
+一：创建socket对象：分为server端和client端
+    创建socket链接：def __init__(self, family=AF_INET, type=SOCK_STREAM, proto=0, fileno=None):
+        family=AF_INET:web服务器之间网络通信（默认）
+        family=AF_UNIX :unix系统上不同进程间通信
+
+        SOCK_STREAM:TCP（默认）
+        SOCK_DGRAM:UDP
+
+client端socket：
+<socket.socket fd=268, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>
+server端socket：
+<socket.socket fd=112, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>
+注意：两个socket没有任何关系。
+
+二：用到的方法：
+        server下的方法：
+            bind()
+            listen()
+            accept()
+
+           发送和接收数据：
+            recv()：接收数据；阻塞
+            send():一次性发，有可能发不干净
+            sendAll():使劲发，确保发生干净
+
+            close():
+
+
+        client下的方法：
+            connect()
+            recv()：阻塞
+            send()
+            sendall()
+
+            close():
+
+     注意：在Python3里面，不管是接收还是发生都需要是byte类型。在Python2中可以是string类型
+            TypeError: a bytes-like object is required, not 'str'
+
+
+ 注意：只要链接建立好之后，谁先说话都可以。
+
+
+ 三：client的socket和server的socket：
+    server 的socket为了绑定端口号和ip，以及listen端口：
+        当server的conn
