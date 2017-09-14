@@ -1,0 +1,8 @@
+有一类线程需要满足条件之后才能够继续执行，Python提供了threading.Condition 对象用于条件变量线程的支持，它除了能提供RLock()或Lock()的方法外，还提供了 wait()、notify()、notifyAll()方法。
+
+lock_con=threading.Condition([Lock/Rlock])： 锁是可选选项，不传人锁，对象自动创建一个RLock()。
+条件变量，比较复杂：可以实现线程间通信。
+
+wait()：条件不满足时调用，线程会释放锁并进入等待阻塞；
+notify()：条件创造后调用，通知等待池激活一个线程；
+notifyAll()：条件创造后调用，通知等待池激活所有线程。

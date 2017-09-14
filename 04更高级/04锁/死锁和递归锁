@@ -1,0 +1,17 @@
+多个线程相互等待对方释放锁，导致死锁。
+
+
+
+threading.Lock()是可重入的锁。
+
+死锁：
+在线程间共享多个资源的时候，如果两个线程分别占有一部分资源并且同时等待对方的资源，就会造成死锁，因为系统判断这部分资源都正在使用，所有这两个线程在无外力作用下将一直等待下去。下
+
+解决办法：使用递归锁;其内部维护了一个计数器。
+
+lockA=threading.Lock()
+lockB=threading.Lock()<br>#--------------<br>lock=threading.RLock()
+为了支持在同一线程中多次请求同一资源，python提供了“可重入锁”：threading.RLock。RLock内部维护着一个Lock和一个counter变量，counter记录了acquire的次数，从而使得资源可以被多次acquire。直到一个线程所有的acquire都被release，其他的线程才能获得资源。
+
+递归锁：是一层层（逐渐加深）的加锁的
+
