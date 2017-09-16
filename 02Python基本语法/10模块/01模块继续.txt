@@ -1,0 +1,39 @@
+一：模块一共三种：
+    A：python标准模块
+    B：第三方模块
+    C：应用程序自定义模块
+
+
+
+二：模块的搜索路径
+    是记录在：sys.path里面的
+        例如：当前：['H:\\MyLearnNotes\\Python\\PythonBase\\02Python基本语法\\10模块\\模块项目', 'H:\\MyLearnNotes\\Python\\PythonBase', 'D:\\SoftWare\\LearnSoftWare\\Python3.6\\python36.zip', 'D:\\SoftWare\\LearnSoftWare\\Python3.6\\DLLs', 'D:\\SoftWare\\LearnSoftWare\\Python3.6\\lib', 'D:\\SoftWare\\LearnSoftWare\\Python3.6', 'D:\\SoftWare\\LearnSoftWare\\Python3.6\\lib\\site-packages']
+
+    首先python解释器通过搜索路径找到模块对应的py文件后，python解释器做了什么？
+        只要在一个地方找到了，就不会继续往下找了。
+        找到后，python解释器会把整个py文件解释一遍（会执行某些代码，例如print函数就会被执行），然后赋值给模块名
+        之后我们就可以通过模块名来获取，该模块里面的东西了。
+            app.add(1,2)
+
+
+三：导入模块的方法：
+    ①：直接导入整个个模块：会把整个模块都解释一遍然后赋值给模块名。
+        import 模块名
+    ②：只导入模块中的某一部分：若还导入整个模块，就又会把整个模块都解释一遍，没有必要。
+        from 模块名 import 导入部分(方法)。此时python解释器只加载了对应的方法，其他内容并没加载过来。
+
+    ③：导入多个模块，或导入模块中的多个方法：使用逗号分隔。
+
+    ④：导入模块中的所有内容的简便方式：
+        from 模块名 import *  。python会把对应模块中的所有内容直接添加到当前py文件中，然后就可以直接使用了，而不用再通过模块名.函数的方式来使用。
+        但是这样有一个问题：重名如何处理。
+            如果重名了，后定义的函数会覆盖前面同名的函数的定义。
+            所以最后使用时，就无法使用先定义的那个函数了。
+
+    ⑤：修改导入模块中某个函数的名称，避免名字冲突：
+        from 模块名 import 老名称 as 新的名称
+            然后就通过新名来调用，并且不能在使用老名称来进行调用了。
+        新名称(参数)
+
+
+
