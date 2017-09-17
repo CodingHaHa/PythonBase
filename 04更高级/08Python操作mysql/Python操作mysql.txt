@@ -1,0 +1,24 @@
+一：Python操作mysql：
+
+二：pip使用：
+    pypi:组织，把你写的模块放到这个组织，以后别人需要你的模块就到这个组织下载。
+    解压然后安装到执行目录：Python3.6\Lib\site-packages
+    D:\SoftWare\LearnSoftWare\Python3.6\Lib\site-packages
+    pip3安装 MySQL pymysql
+    pip3类似于安卓市场：专门用于软件现在安装。
+    python2，默认没有pip命令
+    python3，默认自带pip3命令。
+        命令在：D:\SoftWare\LearnSoftWare\Python3.6\Scripts下面
+        可以将其添加到环境变量里面。
+
+
+通过pip3安装pymysql:
+    pip3 install pymysql 报错：fatal error in launcher:
+        解决：升级pip3 ---> python -m pip install --upgrade pip
+
+
+
+
+
+
+

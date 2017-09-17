@@ -1,0 +1,19 @@
+一：什么是序列化？
+    我们把对象(变量)从内存中变成可存储或传输的过程称之为序列化，
+    在Python中叫pickling，在其他语言中也被称之为serialization，marshalling，flattening等等，都是一个意思。
+    序列化之后，就可以把序列化后的内容写入磁盘，或者通过网络传输到别的机器上。
+    反过来，把变量内容从序列化的对象重新读到内存里称之为反序列化，即unpickling。
+
+二：json
+    如果我们要在不同的编程语言之间传递对象，就必须把对象序列化为标准格式，比如XML，但更好的方法是序列化为JSON，因为JSON表示出来就是一个字符串，可以被所有语言读取，也可以方便地存储到磁盘或者通过网络传输。JSON不仅是标准格式，并且比XML更快，而且可以直接在Web页面中读取，非常方便。
+    JSON表示的对象就是标准的JavaScript语言的对象，JSON和Python内置的数据类型对应如下：
+    JSON类型            python类型
+    {}                  dict
+    []                  list
+    "string"            str
+    123.12              int或float
+    true/false          True/False
+    null                None
+
+
+
