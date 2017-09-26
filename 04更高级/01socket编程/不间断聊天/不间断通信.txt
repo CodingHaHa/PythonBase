@@ -1,0 +1,15 @@
+一、listen方法：
+    #listen表示除了正在进行通信的链接外，还可以让其他三个链接进行排队，但是不会与排队的链接进行通信。
+    #如果还有其他（第五个连接）想来连接server端，就会被server端积极的拒绝。
+    server.listen(3)
+
+二、不间断通信：
+    当直接关掉正在和server端通信的连接，会直接报一个错误：ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+    并且如果不进行错误处理，会导致server直接挂掉。
+
+    但是如果关闭一个排队的连接不会影响server端的正常使用。
+
+    所以，我们要对server端的：
+        conn, addr = server.accept()#出现错误的原因是，本来server阻塞在这里，等待当前client端发送数据，而此时你突然让client端消失了。
+    进行异常处理。
+

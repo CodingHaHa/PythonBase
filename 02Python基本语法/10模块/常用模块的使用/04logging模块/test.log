@@ -1,0 +1,19 @@
+Sun, 17 Sep 2017 13:39:52 logging_module.py[line:23] DEBUG debug message
+Sun, 17 Sep 2017 13:39:52 logging_module.py[line:24] INFO info message
+Sun, 17 Sep 2017 13:39:52 logging_module.py[line:25] WARNING warning message
+Sun, 17 Sep 2017 13:39:52 logging_module.py[line:26] ERROR error message
+Sun, 17 Sep 2017 13:39:52 logging_module.py[line:27] CRITICAL critical message
+2017-09-17 13:43:04,243 - root - WARNING - logger warning message
+2017-09-17 13:43:04,243 - root - ERROR - logger error message
+2017-09-17 13:43:04,243 - root - CRITICAL - logger critical message
+2017-09-17 13:50:42,413 - root - WARNING - logger warning message
+2017-09-17 13:50:42,413 - root - ERROR - logger error message
+2017-09-17 13:50:42,413 - root - CRITICAL - logger critical message
+logger1 info message
+logger1 warning message
+logger1 error message
+logger1 critical message
+logger2 info message
+logger2 warning message
+logger2 error message
+logger2 critical message
