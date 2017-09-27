@@ -6,3 +6,6 @@ lock_con=threading.Condition([Lock/Rlock])： 锁是可选选项，不传人锁�
 wait()：条件不满足时调用，线程会释放锁并进入等待阻塞；
 notify()：条件创造后调用，通知等待池激活一个线程；
 notifyAll()：条件创造后调用，通知等待池激活所有线程。
+
+推荐使用Rlock
+
