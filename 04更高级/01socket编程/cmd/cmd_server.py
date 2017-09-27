@@ -20,7 +20,7 @@ while 1:
         #接收到的数据是一个byte类型，所以需要通过str()的方式进行转换。
         #执行的命令是一个str类型。
         obj = subprocess.Popen(str(data,"utf8"),shell=True,stdout=subprocess.PIPE)
-        result = obj.stdout.read()
+        result = obj.stdout.read()#GBK是由于命令是在Windows（默认为GBK编码）系统下执行的（）
         #由于发生的数据必须是一个byte类型，所以不用进行str转换。直接发送就可以了。
         #int和byte不能直接进行类型转换。需要通过中间的str帮助。
         result_len = bytes(str(len(result)),"utf8")

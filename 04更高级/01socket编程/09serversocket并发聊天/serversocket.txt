@@ -1,0 +1,49 @@
+serversocket封装了我们使用socket模块是自己编写绑定IP和端口。等流程。
+    server = socket.socket()
+    addr = ("127.0.0.1",8080)
+    server.bind(addr)
+    server.listen(5)
+    print("waiting........")
+我们可以直接使用
+
+并且serversocket可以实现多线程并发的server。
+
+
+对于逻辑的设置，就需要我们自己去实现了。
+    通过重写父类的handle方法
+
+默认可以同时进行通信的链接为5个：
+        即这5个连接可以同时和server通信。
+
+
+
+详情请：阅读源码。
+五个类：
+        +------------+
+        | BaseServer |
+        +------------+
+              |
+              v
+        +-----------+        +------------------+
+        | TCPServer |------->| UnixStreamServer |  这两个类只差一个参数：address_family = socket.AF_UNIX
+        +-----------+        +------------------+
+              |
+              v
+        +-----------+        +--------------------+
+        | UDPServer |------->| UnixDatagramServer |
+
+
+if __name__ == '__main__':
+    #这里使用ThreadingTCPServer来使用并发（多线程）的server
+    server = socketserver.ThreadingTCPServer(('127.0.0.1',8098),MyServer)#可以实现并发
+    # server = socketserver.TCPServer(('127.0.0.1',8098),MyServer)#不可以实现并发
+    #启动服务器。
+    server.serve_forever()
+
+
+
+
+
+创建线程：ThreadingMixIn；通过它来实现并发
+class ThreadingUDPServer(ThreadingMixIn, UDPServer): pass
+class ThreadingTCPServer(ThreadingMixIn, TCPServer): pass

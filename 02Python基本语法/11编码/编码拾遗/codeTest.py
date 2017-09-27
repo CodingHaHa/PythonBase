@@ -26,11 +26,11 @@ print(sb)#b'hello\xb7\xe2'(gbk规则下的编码结果)
 
 #从bytes>>>>str叫做解码
 #解码方式一：
-ss = str(sb,"gbk")
-# ss2 = str(sb,"utf8")
+ss = str(b,"gbk")
+ss2 = str(b,"utf8")
 # ss3 = str(b,"gbk")
 print(ss)
-# print(ss2)#UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 5: invalid start byte
+print(ss2)#UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 5: invalid start byte
 # print(ss3)#UnicodeDecodeError: 'utf-8' codec can't decode byte 0xb7 in position 5: invalid start byte
 
 #解码时，必须按照编码是的字符串进行，否则就会出现乱码。
